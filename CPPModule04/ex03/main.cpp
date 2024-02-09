@@ -5,26 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 23:57:12 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/10 00:34:39 by migarci2         ###   ########.fr       */
+/*   Created: 2024/02/09 23:56:50 by migarci2          #+#    #+#             */
+/*   Updated: 2024/02/10 00:24:00 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include "MateriaSource.hpp"
+#include "Character.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 
 int main()
 {
-    Animal* animals[4] = {new Dog(), new Cat(), new Dog(), new Cat()};
-    for (int i = 0; i < 4; i++)
-    {
-        delete animals[i];
-    }
+	IMateriaSource *src = new MateriaSource();
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
 
-    const Animal* j = new Dog();
-    const Animal* i = new Cat();
-    delete j;//should not create a leak
-    delete i;
+	ICharacter *me = new Character("me");
 
-return 0;
+	AMateria *tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter *bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
 }

@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 23:26:37 by migarci2          #+#    #+#             */
-/*   Updated: 2024/02/10 00:40:12 by migarci2         ###   ########.fr       */
+/*   Created: 2024/02/07 23:57:12 by migarci2          #+#    #+#             */
+/*   Updated: 2024/02/10 00:30:44 by migarci2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "Cat.hpp"
+#include "Dog.hpp"
 
-# include <iostream>
-# include <string>
-
-class Animal
+int main()
 {
-	protected:
-		std::string type;
-	public:
-		Animal();
-		Animal(std::string type);
-		Animal(const Animal &copy);
-		virtual ~Animal();
+    Animal an = Animal();
+    //Funcionará???? Spoiler: NO MUAJAJAJAJA
 
-		Animal &operator=(const Animal &copy);
-		
-		std::string getType() const;
-		virtual void makeSound() const = 0;
-};
-
-#endif
+    return 0;
+}
