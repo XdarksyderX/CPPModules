@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: migarci2 <migarci2@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/23 18:17:56 by migarci2          #+#    #+#             */
+/*   Updated: 2024/03/23 18:36:04 by migarci2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Serializer.hpp"
+
+Serializer::Serializer()
+{
+
+}
+
+Serializer::~Serializer()
+{
+
+}
+
+Serializer::Serializer(const Serializer &s)
+{
+	(void) s;
+}
+
+Serializer &Serializer::operator=(const Serializer &s)
+{
+	*this = s;
+	return (*this);
+}
+
+uintptr_t Serializer::serialize(Data *ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data *Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}
